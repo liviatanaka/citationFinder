@@ -1,17 +1,11 @@
 from fastapi import FastAPI, Query
 import os
 import uvicorn
+from finder import FinderModel
 
-class DummyModel:
-    def predict(self, X):
-        return "dummy prediction"
-
-def load_model():
-    predictor = DummyModel()
-    return predictor
 
 app = FastAPI()
-app.predictor = load_model()
+app.predictor = FinderModel()
 
 @app.get("/hello")
 def read_hello():
