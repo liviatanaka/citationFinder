@@ -5,6 +5,8 @@ class Database:
     def __init__(self, name):
         
         self.df = pd.read_csv(f"../cleaned_data/{name}.csv")
+        self.df['title'] = self.df['title'].str.replace('\n', ' ')
+        self.df['abstract'] = self.df['abstract'].str.replace('\n', ' ')
         self.name = name 
         self.vectorizer = TfidfVectorizer()
         self.X = self.vectorizer.fit_transform(self.df['abstract'])

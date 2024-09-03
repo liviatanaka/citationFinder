@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Query
+from fastapi import FastAPI, Query, Response
 import os
 import uvicorn
 from finder import FinderModel
@@ -12,31 +12,15 @@ app.predictor = FinderModel()
 def read_hello():
     return {"message": "hello world"}
 
-@app.get("/predict")
+@app.get("/query")
 def predict(X: str = Query(..., description="Input text for prediction")):
     json_str  = app.predictor.predict(X)
     json_data = json_lib.loads(json_str)
     results = {'results': json_data, 'message': 'OK'}
     
-    
-    return results
+    pretty_data = json_lib.dumps(results, indent=4)
+    return Response(pretty_data, media_type="application/json")
 
-# @app.get("/query")
-# def query_route(query: str = Query(..., description="Search query")):
-#     # TODO: write your code here, keeping the return format
-#     return {"results": [   {'title':'Document title',
-#         'content':'Document content (perhaps only the first 500 words?',
-#         'relevance': 0.3
-#         },
-#         {'title':'Document title',
-#         'content':'Document content (perhaps only the first 500 words?',
-#         'relevance': 0.2
-#         },
-#         {'title':'Document title',
-#         'content':'Document content (perhaps only the first 500 words?',
-#         'relevance': 0.1
-#         }
-#     ], "message": "OK"}
 
 def run():
     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
