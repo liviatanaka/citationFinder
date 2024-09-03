@@ -27,6 +27,8 @@ In this section, we provide examples of different types of search queries and th
 **Query:** `nlp`  
 **Link:** [http://10.103.0.28:2004/query?query=nlp](http://10.103.0.28:2004/query?query=nlp)  
 **Comment:** Searching for "nlp" returns fewer than 10 results, because there aren't enough relevant documents in the database (we are applying a minimum relevance filter).
+
+#### 3. Test that yields something non-obvious
 **Query:** `wolf`  
 **Link:** [http://10.103.0.28:2004/query?query=wolf](http://10.103.0.28:2004/query?query=wolf)  
 **Comment:** The search for "wolf" might initially suggest results related to the animal, but it yields articles on unexpected topics, such as `Wolf-Rayet`. This non-obvious result highlights the search engine's capability to identify and return documents that relate to lesser-known or niche interpretations of a query, beyond the immediately obvious meaning.
