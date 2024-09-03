@@ -15,7 +15,21 @@ This dataset available for search is a combination of the following data:
 
 [ArXiv](https://arxiv.org/) is a free distribution service, and an open-access archive for scholarly articles in the fields of physics, mathematics, computer science, quantitative finance, economics, etc. The articles from this archive are from a [Kaggle dataset](https://www.kaggle.com/datasets/Cornell-University/arxiv).
 
+### Test Cases
 
+In this section, we provide examples of different types of search queries and their results. These examples demonstrate the functionality and behavior of the search engine under various conditions.
+
+#### 1. Test that yields 10 results
+**Query:** `neural network`  
+**Link:** [http://10.103.0.28:2004/query?query=neural+network](http://10.103.0.28:2004/query?query=neural+network)  
+**Comment:** Searching for "neural network" yields exactly 10 results.
+#### 2. Test that yields less than 10 results
+**Query:** `nlp`  
+**Link:** [http://10.103.0.28:2004/query?query=nlp](http://10.103.0.28:2004/query?query=nlp)  
+**Comment:** Searching for "nlp" returns fewer than 10 results, because there aren't enough relevant documents in the database (we are applying a minimum relevance filter).
+**Query:** `wolf`  
+**Link:** [http://10.103.0.28:2004/query?query=wolf](http://10.103.0.28:2004/query?query=wolf)  
+**Comment:** The search for "wolf" might initially suggest results related to the animal, but it yields articles on unexpected topics, such as `Wolf-Rayet`. This non-obvious result highlights the search engine's capability to identify and return documents that relate to lesser-known or niche interpretations of a query, beyond the immediately obvious meaning.
 
 ## Running the Project with Docker
 
